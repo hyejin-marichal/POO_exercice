@@ -11,6 +11,30 @@ use App\Animals\Zebra;
 
 require __DIR__ . '/vendor/autoload.php';
 
+
+
+$animals = [
+    Fish::class => 5,
+    BubbleFish::class => 3,
+    CatFish::class => 2,
+    ClownFish::class => 1,
+    Elephant::class => 2,
+    Zebra::class => 1,
+    Parrot::class => 10,
+    Dove::class => 2
+];
+
+foreach ($animals as $key => $value) {
+    for ($i = 0; $i < $value; $i++) {
+        $animal = new $key($key. ($i+1));
+        \App\Zoo::addAnimal($animal);
+    }
+
+}
+$zoo= new \App\Zoo();
+$zoo->visitTheZoo();
+
+
 /*
 // etape 2-1(cris d'animaux)
 $elephant = new \App\Animals\Elephant('L\'éléphant');
@@ -50,41 +74,43 @@ foreach ($animals as $value) {
 */
 
 // version .2 tableaux
-$animals = [
-    ['type' => Fish::class,
-     'nb' => 5
-    ],
-    ['type' => BubbleFish::class,
-        'nb' => 3
-    ],
-    ['type' => CatFish::class,
-        'nb' => 2
-    ],
-    ['type' => ClownFish::class,
-        'nb' => 1
-    ],
-    ['type' => Elephant::class,
-        'nb' => 2
-    ],
-    ['type' => Zebra::class,
-        'nb' => 1
-    ],
-    ['type' => Parrot::class,
-        'nb' => 10
-    ],
-    ['type' => Dove::class,
-    'nb' => 2
-    ]
-];
+//$animals = [
+//    ['type' => Fish::class,
+//     'nb' => 5
+//    ],
+//    ['type' => BubbleFish::class,
+//        'nb' => 3
+//    ],
+//    ['type' => CatFish::class,
+//        'nb' => 2
+//    ],
+//    ['type' => ClownFish::class,
+//        'nb' => 1
+//    ],
+//    ['type' => Elephant::class,
+//        'nb' => 2
+//    ],
+//    ['type' => Zebra::class,
+//        'nb' => 1
+//    ],
+//    ['type' => Parrot::class,
+//        'nb' => 10
+//    ],
+//    ['type' => Dove::class,
+//    'nb' => 2
+//    ]
+//];
+//
+//foreach ( $animals as $item) {
+//    for($i=0; $i < $item['nb']; $i++)
+//    {
+//     $temp= new $item['type']($item['type']." ".($i+1));
+//     echo $temp->noise();
+//
+//    }
+//}
 
-foreach ( $animals as $item) {
-    for($i=0; $i < $item['nb']; $i++)
-    {
-     $temp= new $item['type']($item['type']." ".($i+1));
-     echo $temp->noise();
 
-    }
-}
 /*
 // version aurelie + alex
 $animals = [
@@ -108,3 +134,25 @@ function get_name($class) {
     return (substr($class, strrpos($class, '\\') + 1));
 }
 */
+
+//
+//$animals = [
+//    [
+//        'type' => \App\Animals\Fish::class,
+//        'nbr' => 5
+//    ],
+//    [
+//        'type' => \App\Animals\BubbleFish::class,
+//        'nbr' => 3
+//    ],
+//];
+//
+//foreach($animals as $class) {
+//    \App\Zoo::AddAnimal($class['']);
+//}
+
+//version muza
+//
+//$abc = new \App\Enclosure();
+//$abc->AddAnimal(new Fish('musa'));
+//echo $abc->__toString();
